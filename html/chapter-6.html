@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter-6</title>
+    <style>
+        .content{
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tables</h1>
+    <table border="3" bgcolor="black">
+        <caption>Table for Population in 3 cities</caption>
+        <tr bgcolor="grey">
+            <th>City</th>
+            <th>Country</th>
+            <th>Population</th>
+        </tr>
+        <tr align="center" class="content">
+            <td>Tokyo</td>
+            <td>Japan</td>
+            <td>37,400,068</td>
+        </tr>
+        <tr align="center" class="content">
+            <td>Delhi</td>
+            <td>India</td>
+            <td>31,181,376</td>
+        </tr>
+        <tr align="center" class="content">
+            <td>São Paulo</td>
+            <td>Brazil</td>
+            <td>22,237,472</td>
+        </tr>
+    </table>
+    <br><br><br>
+    <table border="3">
+        <caption>Foods and Cusines</caption>
+        <tr bgcolor="pink" width="300px">
+            <th width="150px">Food</th>
+            <th width="150px">Cuisine</th>
+        </tr>
+        <tr align="center">
+            <td>Pizza</td>
+            <td>Italian</td>
+        </tr>   
+        <tr align="center">
+            <td>Sushi</td>
+            <td>Japanese</td>
+        </tr>   
+        <tr align="center">
+            <td>Chocolate Cake</td>
+            <td>Western</td>
+        </tr>   
+        <tr align="center">
+            <td>Tacos</td>
+            <td>Mexican</td>
+        </tr>   
+        <tr align="center">
+            <td>Paneer Butter Masala</td>
+            <td>Indian</td>
+        </tr>   
+    </table>
+    <br><br><br>
+    <table border="1">
+        <caption>Weekly Schedule</caption>
+        <tr>
+            <th rowspan="3">Day</th>
+            <th colspan="4">Seminar</th>
+        </tr>
+        <tr>
+            <th colspan="2">Schedule</th>
+            <th rowspan="2">Topic</th>
+        </tr>
+        <tr>
+            <th>Begin</th>
+            <th>End</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Monday</td>
+            <td rowspan="2">8:00 a.m.</td>
+            <td rowspan="2">5:00 p.m.</td>
+            <td>Introduction to XML</td>
+        </tr>
+        <tr>
+            <td>Validity: DTD and Relax NG</td>
+        </tr>
+        <tr>
+            <td rowspan="4">Tuesday</td>
+            <td>8:00 a.m.</td>
+            <td>11:00 a.m.</td>
+            <td rowspan="2">XPath</td>
+        </tr>
+        <tr>
+            <td rowspan="2">11:00 a.m.</td>
+            <td rowspan="2">2:00 p.m.</td>
+        </tr>
+        <tr>
+            <td rowspan="2">XSL Transformation</td>
+        </tr>
+        <tr>
+            <td>2:00 p.m.</td>
+            <td>5:00 p.m.</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>8:00 a.m.</td>
+            <td>12:00 p.m.</td>
+            <td>XSL Formatting Objects</td>
+        </tr>
+    </table>
+</body>
+</html>
