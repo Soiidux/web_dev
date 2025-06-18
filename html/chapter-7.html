@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter-7</title>
+</head>
+<body>
+    <h1>This is a form</h1>
+    <form action="" method="get">
+    <label for="Phone number">Phone Number</label>
+    <input type="tel" pattern="[0-9]{10}" placeholder="Phone number" required title="Phone number must be 10 characters long">
+    <br>
+    <label>Text area for additional comments:</label>
+    <textarea rows="1"  placeholder="Type text here"></textarea>
+    <br>
+    <label for="Password">Password</label>
+    <input type="password" pattern=".{8,}" required title="Password must be atleast 8 characters long">
+    <br>
+    <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
