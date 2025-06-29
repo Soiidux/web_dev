@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        header{
+            background-color:rgb(46, 49, 72);
+            color: #ffffff;
+            height: 7vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:20px 10px;
+        }
+
+        .list{
+            list-style-type:none;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            cursor: pointer;
+            flex-wrap: wrap;
+        }
+
+        .navbutton{
+            padding: 5px 10px;
+            border-radius: 5px;
+            border:none;
+            cursor: pointer;
+        }
+        .navbutton:hover{
+            background-color: #ced9e1;
+            /* border: solid black 1px; */
+        }
+        .hero{
+            display: flex;
+            background-color: rgb(46, 49, 72);
+            color: white;
+            padding: 20px 10px;
+        }
+
+        .hero div{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            gap: 10px;
+        }
+        .hero div p{
+            color: #a7aeb3;
+        }
+        .hero div img{
+            width: 100%;
+            border-radius: 20px;
+        }
+        
+        .clients{
+            text-align: center;
+            color: rgb(46, 49, 72);
+            font-size: 1.5rem;
+        }
+        .client_images{
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+            background-color: rgb(46, 49, 72);
+            object-fit:contain;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        .client_images img{
+            width: 250px;
+        }
+
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            My logo
+        </div>
+        <div class="navbar">
+            <ul class="list">
+                <li><a >Home</a></li>
+                <li>About Us</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button class="navbutton">Sign Up</button>
+            <button class="navbutton">Sign In</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1 style="font-size: 4rem;">Hero title</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci distinctio voluptate enim at culpa illo dolorem, assumenda velit autem impedit!</p>
+            <button class="navbutton" style="width: 200px ;">Sign up</button>
+        </div>
+        <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXert6ekqTL1J7LVWNAhs65_GeostayFqh6A&s">
+        </div>
+    </section>
+    <section class="clients">
+        <h2>Our clients</h2>
+        <div class="client_images">
+            <img src="https://images.pexels.com/photos/15863044/pexels-photo-15863044.jpeg">
+            <img src="https://images.pexels.com/photos/1162361/pexels-photo-1162361.jpeg">
+            <img src="https://images.pexels.com/photos/430205/pexels-photo-430205.jpeg">
+            <img src="https://images.pexels.com/photos/1337380/pexels-photo-1337380.jpeg">
+        </div>
+    </section>
+</body>
+</html>
