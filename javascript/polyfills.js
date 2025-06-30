@@ -37,3 +37,29 @@ function mymappingFn(Arr_element,i,Arr){
 }
 
 // console.log(arr.mymap(mymappingFn));
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+//Error: .filter function does not exist on arr variable
+//.filter returns a new array consisting of elements for which the filterFn returns true
+if(!Array.prototype.myfilter){
+    Array.prototype.myfilter = function(filterFn){
+        const originalArr=this;
+        const newArr=[];
+        for(let i=0;i<originalArr.length;i++){
+            if(filterFn(originalArr[i],i)){
+                newArr.push(originalArr[i]);
+            }
+        }
+        return newArr;
+    }
+}
+
+function myfilterFn(Arr_element,i,Arr){
+    if(Arr_element%2===0){
+        return true;
+    }
+}
+
+console.log(arr.myfilter(myfilterFn));
