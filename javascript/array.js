@@ -24,6 +24,9 @@ for (let i = 0; i<fruits.length;i++){
     console.log(fruits[i]);
 }
 
+//Problem: Print each fruit without for loop
+fruits.forEach((element)=>console.log(element));
+
 //Problem: Use a loop to calculate how many fruits are berry like
 let sum=0;
 for (let i=0; i<fruits.length;i++){
