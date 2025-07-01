@@ -34,7 +34,7 @@ for (key in tea){
 const teas={
     greentea:{
         tname:"Green Tea",
-        caffeine=:"low"
+        caffeine:"low"
     },
     blacktea:{
         tname:"Black Tea",
