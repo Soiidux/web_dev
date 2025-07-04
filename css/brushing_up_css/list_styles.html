@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brushing up List Styles</title>
+    <style>
+        #ul1{
+            list-style-type:disc;
+        }
+        #ul2{
+            list-style-type:circle;
+        }
+        #ul3{
+            list-style-type: square;
+        }
+        #ul4{
+            list-style-type: none;
+        }
+        #ul5{
+            list-style-type: lower-roman;
+            list-style-position: inside;
+        }
+        #ul6{
+            list-style-type: armenian;
+            list-style-position:outside;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Brushing up List Styles</h1>
+    <div class="container1">
+        <p>There are 3 css properties which one can use to change the styles of list, they are:</p>
+        <ul>
+            <li>list-style-type: Used to change the style of list markers.</li>
+            <ul id="ul1">
+                <li>Hello World</li>
+                <li>This is ul1, it uses disc type bullets.</li>
+            </ul>
+            <ul id="ul2">
+                <li>Hello World</li>
+                <li>This is ul2, it uses circle type bullets.</li>
+            </ul>
+            <ul id="ul3">
+                <li>Hello World</li>
+                <li>This is ul3, it uses square type bullets.</li>
+            </ul>
+            <ul id="ul4">
+                <li>Hello World</li>
+                <li>This is ul4, it doesn't use bullets.</li>
+            </ul>
+            <p>Other than these bullet types several numeric type list markers are also available, both in uppercase and lowercase</p>
+        </ul>
+        <hr>
+        <ul>
+            <li>list-style-position: It determines where the list markers (bullets or numbers) are placed in relation to the content. It has two values, inside and outside</li>
+            <ul id="ul5">
+                <li>This is a list element</li>
+                <li>list-style-position:inside</li>
+            </ul>
+            <ul id="ul6">
+                <li>This is a list element</li>
+                <li>list-style-position:outside</li>
+            </ul>
+        </ul>
+        <hr>
+        <ul>
+            list-style-image: This property can be used to change the list markers to an image.
+        </ul>
+        
+    </div>
+</body>
+</html>
