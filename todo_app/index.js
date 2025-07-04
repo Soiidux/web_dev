@@ -10,4 +10,7 @@ addBtn.addEventListener("click",function(){
     const xbutton=document.createElement("button");
     xbutton.innerText="X";
     li.appendChild(xbutton);
+    xbutton.addEventListener("click",function(){
+        li.remove();
+    })
 })
