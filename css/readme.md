@@ -1,0 +1,3 @@
+I felt like I needed to learn more css concepts before making some real projects so I decided to follow https://www.codewithharry.com/tutorials which had a list of all css properties and features. So I made a new folder called learning css and make topic-wise websites, documenting the topics as I brushed them up.
+
+PS: one can also refer The Odin Project, W3school or any other websites for this, but I found this to be the simplest of them all.
