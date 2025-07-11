@@ -1,4 +1,4 @@
-//Proxy such that user is not able to change the data
+//Proxy such that user is able to make only VALID changes to data
 
 let person = {
     fname: "Yash",
@@ -9,10 +9,10 @@ let person = {
 let personProxy = new Proxy(person, {
     get(target, prop) {
         if (prop in target){
-            return target[prop];
+            return Reflect.get(target,prop);
         }
         else{
-            return "Invalid propery"
+            return "Invalid propery";
         }
     },
     set(target,prop,value){
@@ -33,7 +33,7 @@ let personProxy = new Proxy(person, {
             
             
         }
-        target[prop]=value;
+        Reflect.set(target,prop,value);
         }
 })
 
