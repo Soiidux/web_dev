@@ -37,9 +37,43 @@ let personProxy = new Proxy(person, {
         }
 })
 
-console.log(personProxy.age);
+// console.log(personProxy.age);
 // console.log(personProxy.password);
 // personProxy.age=-10;
 // personProxy.age="abc";
 // personProxy.fname=1;
 
+
+//Proxy such that the user is not able to change anything, but is able to view anything except password
+
+let person2 = {
+    username: "Yash Nagpal",
+    age: 18,
+    password: "123"
+}
+
+let person2Proxy = new Proxy(person2,{
+    get(target,prop){
+        if(prop in target){
+            switch(prop){
+                case 'password':
+                    return "Access Denied: Cannot access the password of a user."
+                    break;
+                default:
+                    return Reflect.get(target,prop); 
+            }
+        }
+        else{
+            throw new Error(`${prop} does not exist`);
+        }
+    },
+
+    set(target,prop,value){
+        throw new Error(`Cannot modify properties: ${prop} cannot be modified`);
+    }
+})
+
+// console.log(person2Proxy.username);
+// console.log(person2Proxy.age);     
+// console.log(person2Proxy.password); 
+// person2Proxy.age = 25;    
