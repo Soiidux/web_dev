@@ -7,6 +7,14 @@ function updateClock(){
     const seconds = now.getSeconds().toString().padStart(2,"0");
     const AMPM = now.getHours() >= 12? "PM" : "AM";
     timeElement.textContent = `${hours}:${minutes}:${seconds} ${AMPM}`;
+
+    const options = {
+        weekday: "long",
+        month:"long",
+        day: "numeric",
+        year: "numeric"
+    }
+    dateElement.textContent = now.toLocaleDateString(undefined,options);
 }
 updateClock();
 setInterval(updateClock,1000);
