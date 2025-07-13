@@ -32,3 +32,28 @@ fs.readFile("./hello.txt","utf-8",function(err,response){   //Reading hello.txt
 })
 console.log("Program ended");
 
+// -----------------------------------------------------------------------------------------------------------------------------
+
+//Async(non-blocking) operations *using promises*
+
+//Read a file hello.txt
+//Make a new file called backup.txt
+//Copy the contents of hello.txt to backup.txt
+//Delete hello.txt
+console.log("Starting Program");
+const fsv2 = require("fs/promises");
+fsv2.readFile("./hello.txt","utf-8")
+.then((response)=> 
+    {
+        console.log("Hello.txt was read successfully")
+        fsv2.writeFile("backup.txt",response)
+        console.log("Successfully written backup.txt")
+    })
+.then(()=>
+    {
+        fsv2.unlink("./hello.txt")
+        console.log("hello.txt deleted successfully")
+    })
+.catch((error)=>console.log("Error",error));
+
+console.log("Program ended");
