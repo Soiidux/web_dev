@@ -4,6 +4,10 @@
 //Make a new file called backup.txt
 //Copy the contents of hello.txt to backup.txt
 //Delete hello.txt
+
+// @@@@@@   LEGACY CODE   @@@@@@
+// -----------------------------------------------------------------------------------------------------------------------------
+
 const fs = require("fs");
 console.log("Starting Program");
 fs.readFile("./hello.txt","utf-8",function(err,response){   //Reading hello.txt
@@ -31,29 +35,97 @@ fs.readFile("./hello.txt","utf-8",function(err,response){   //Reading hello.txt
     }
 })
 console.log("Program ended");
-
 // -----------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+// @@@@@@   CONVERTING LEGACY CODE TO MODERN CODE   @@@@@@
+// -----------------------------------------------------------------------------------------------------------------------------
+
+// const fs = require('fs');
+// function ReadFileWithPromise(filepath,encoding){
+//     return new Promise((resolve,reject)=>
+//     {
+//         fs.readFile(filepath,encoding,(error,content)=>
+//         {
+//             if(error){
+//                 reject(error);                                  //Signal to user's .catch function to run
+//             }
+//             else{
+//                 resolve(content);                               //Signal to user's .then function to run
+//             }       
+//         })
+//     })
+// }
+
+// function WriteFileWithPromise(filename,content){
+//     return new Promise((resolve,reject)=>
+//     {
+//         fs.writeFile(filename,content,function(error)
+//         {
+//            if(error){
+//             reject(error);
+//            } 
+//            else{
+//             resolve(`${filename} was written successfully`);
+//            }
+//         })
+//     })
+// }
+
+// function DeleteFileWithPromise(filepath){
+//     return new Promise((resolve,reject)=>
+//         {
+//             fs.unlink(filepath,function(error)
+//             {
+//                 if(error){
+//                     reject(error);
+//                 }
+//                 else{
+//                     resolve("File was deleted.");
+//                 }
+//             })
+//         })
+// }
+// console.log("Program start");
+// ReadFileWithPromise('./hello.txt','utf-8')
+//     .then((content)=>WriteFileWithPromise('backup.txt',content))
+//     .then((Writtenmessage)=>{
+//         console.log(Writtenmessage);
+//         return DeleteFileWithPromise('./hello.txt');
+//     })
+//     .then((Deletemessage)=>console.log(Deletemessage))
+//     .catch((error)=>console.log(`Error: ${error}`))
+// console.log("Program end.")
+// -----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+// @@@@@@   CODING ASYNC OPERATIONS USING PROMISES   @@@@@@
+// -----------------------------------------------------------------------------------------------------------------------------
 //Async(non-blocking) operations *using promises*
 
 //Read a file hello.txt
 //Make a new file called backup.txt
 //Copy the contents of hello.txt to backup.txt
 //Delete hello.txt
-console.log("Starting Program");
-const fsv2 = require("fs/promises");
-fsv2.readFile("./hello.txt","utf-8")
-.then((response)=> 
-    {
-        console.log("Hello.txt was read successfully")
-        fsv2.writeFile("backup.txt",response)
-        console.log("Successfully written backup.txt")
-    })
-.then(()=>
-    {
-        fsv2.unlink("./hello.txt")
-        console.log("hello.txt deleted successfully")
-    })
-.catch((error)=>console.log("Error",error));
+// console.log("Starting Program");
+// const fsv2 = require("fs/promises");
+// fsv2.readFile("./hello.txt","utf-8")
+// .then((response)=> 
+//     {
+//         console.log("Hello.txt was read successfully")
+//         fsv2.writeFile("backup.txt",response)
+//         console.log("Successfully written backup.txt")
+//     })
+// .then(()=>
+//     {
+//         fsv2.unlink("./hello.txt")
+//         console.log("hello.txt deleted successfully")
+//     })
+// .catch((error)=>console.log("Error",error));
 
-console.log("Program ended");
+// console.log("Program ended");
+// -----------------------------------------------------------------------------------------------------------------------------
