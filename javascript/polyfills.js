@@ -63,3 +63,26 @@ function myfilterFn(Arr_element,i,Arr){
 }
 
 console.log(arr.myfilter(myfilterFn));
+
+//Error: .reduce function does not exist on arr variable
+//The reduce() method of Array instances executes a callback function on each element of the array, 
+//passing in the return value from the calculation on the preceding element.
+
+if(!Array.prototype.myreduce){
+    Array.prototype.myreduce = function(callbackFn,initialvalue = undefined){
+        // let accumulator = initialvalue ?? this[0];          // ?? = nullish function
+        let accumulator = initialvalue || this[0];
+        startIndex = initialvalue? 0:1
+        for(let i = startIndex; i<this.length;i++){
+            accumulator=callbackFn(accumulator,this[i]);
+        }
+        return accumulator;
+    }
+}
+
+function myreduceFn(accumulator, currentvalue){ 
+    return accumulator + currentvalue;
+
+}
+
+// console.log(arr.myreduce(myreduceFn));
