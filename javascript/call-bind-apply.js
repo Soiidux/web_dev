@@ -38,6 +38,7 @@ The apply() method of a function is similar to the call() method, it alos explic
 (thisArgument), the only difference is that the arguments to the function are passed as an array([arg1,arg2,arg3,...]) or an array-like-object.
 */
 
+//###############################################################################################################################
 const printDetails = function(Department, Floor){
     console.log(this.name + " | " + Department + " | " + Floor);
 }
@@ -49,3 +50,22 @@ const UserDetails = {
 };
 
 printDetails.apply(UserDetails,["App testing","First Floor"]);
+//###############################################################################################################################
+
+
+
+
+
+
+//  BIND
+/*  USAGE: function.bind(thisArg, arg1, arg2,.....)
+Function.prototype.bind() creates a new function with a fixed this value (and optionally, pre-set arguments). 
+Once these values are bound they cannot be changed.
+Unlike .call() or .apply(), which execute immediately, .bind() returns a bound function that can be called later.
+ */
+
+//Using the above example########################################################################################################
+const Boundfunction = printDetails.bind(UserDetails,"App testing","First Floor");
+Boundfunction();
+
+
