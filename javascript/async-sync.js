@@ -15,9 +15,7 @@ setTimeout(() => console.log("Task 4"),3000);
 console.log("Task 5");
 
 
-
-
-
+//JS is asynchronous in nature but is synchronous by default
 
 
 
@@ -125,6 +123,11 @@ function DeleteFileWithPromise(filepath){
 // -----------------------------------------------------------------------------------------------------------------------------
 
 //  @@@@@@ CONVERTING THE ABOVE CODE INTO A MORE READABLE CODE USING ASYNC AND AWAIT :Async code looks like sync code   @@@@@@
+
+//  async = makes a function return a promise
+//  await = makes an async function wait for a promise
+//  Both of these allow us to write async code in a sync manner. Async dosen't have resolve or reject parameters. 
+//  Everything after awaitis placed in an event queue.
 // -----------------------------------------------------------------------------------------------------------------------------
 async function DoTasks() {
     try{
