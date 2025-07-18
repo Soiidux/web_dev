@@ -1,3 +1,26 @@
+//syncronous =  Executes executes line by line consecutively in a sequencial manner. It is a code that waits for operations to complete
+//              It is a blocking code
+//Example of a sync code: 
+
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+
+//asyncronous = Allows multiple operations to be performed concurrently without waiting. It is a non-blocking code i.e it doesn't block
+//              execution flow and allows the program to continue. It is handled with callbacks, promises and async/await
+//              (I/O operations, network requests, fetching data)
+//Example of async code:
+
+setTimeout(() => console.log("Task 4"),3000);
+console.log("Task 5");
+
+
+
+
+
+
+
+
 //Async(non-blocking) operations *without using promises*
 
 //Read a file hello.txt
