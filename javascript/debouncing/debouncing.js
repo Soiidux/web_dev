@@ -38,18 +38,107 @@ function debounce(fn, delay){
 
 
 // The above code returns an array of product names called productnames using fetch, a better way to do this is as below:
-async function getData(){
-    try {
-        const response = await fetch("https://api.freeapi.app/api/v1/public/randomproducts");
-        const rawdata = await response.json();
-        const productDiscription = rawdata.data.data;
-        const productNames = productDiscription.map((element,index) => element.title);
-        return productNames;
+// async function getData(){
+//     try {
+//         const response = await fetch("https://api.freeapi.app/api/v1/public/randomproducts");
+//         const rawdata = await response.json();
+//         const productDiscription = rawdata.data.data;
+//         const productNames = productDiscription.map((element,index) => element.title);
+//         return productNames;
+//     }
+//     catch(error) {
+//         console.log(`Error: ${error}`);
+//     }
+//     finally{
+//         console.log("All done");
+//     }
+// }
+
+
+
+
+// I COMMENTED THE API CALLS OUT BECAUSE I WOULD BE USING HARDCODED DATASET AS THE ONE FETCHED USING THE API IS VERY SMALL
+
+function getSimilarProducts(query){
+    let processedQuery = query.trim().toLowerCase();
+    if (!processedQuery){
+        return [];
     }
-    catch(error) {
-        console.log(`Error: ${error}`);
-    }
-    finally{
-        console.log("All done");
+    else{
+        const results = allProducts.filter(product =>product.toLowerCase().includes(processedQuery));
+        return results.slice(0,10);
     }
 }
+
+function displaySuggestions(matches){
+    const suggestionList = document.getElementById("suggestions");
+    suggestionList.innerHTML = "";
+
+    if(matches.length === 0){
+        const li = document.createElement("li");
+        li.textContent = "No matches found";
+        suggestionList.appendChild(li);
+    }
+    else{
+        matches.forEach((suggestion,index) => {
+            const li = document.createElement("li");
+            li.textContent = matches[index];
+            suggestionList.appendChild(li);
+        });
+    }
+}
+
+// let allProducts = [];
+
+const allProducts = [
+    "Apple iPhone 14",
+    "Samsung Galaxy S23",
+    "Sony WH-1000XM4 Headphones",
+    "Apple MacBook Pro",
+    "OnePlus Nord CE",
+    "Canon EOS M50 Camera",
+    "Dell XPS 13 Laptop",
+    "Nike Running Shoes",
+    "Adidas UltraBoost",
+    "Apple Watch Series 8",
+    "iPad Pro 12.9-inch",
+    "Lenovo ThinkPad X1",
+    "HP Pavilion Gaming",
+    "JBL Flip 5 Speaker",
+    "Bose QuietComfort Earbuds",
+    "LG OLED TV 55-inch",
+    "Google Pixel 7",
+    "Sony Bravia TV",
+    "Fitbit Charge 5",
+    "Xiaomi Mi Band 7",
+    "Kindle Paperwhite",
+    "Huawei MateBook D15",
+    "Oppo Reno8 Pro",
+    "Motorola Edge 40",
+    "Asus ROG Phone 6",
+    "TCL Smart Air Conditioner",
+    "Amazon Echo Dot (4th Gen)",
+    "Philips Hue Smart Bulb",
+    "Boat Rockerz 450",
+    "Vivo Y76s 5G",
+    "Realme Narzo 50A",
+    "Panasonic Lumix G7",
+    "Samsung Galaxy Tab S8",
+    "Sony Alpha A7 III",
+    "Garmin Forerunner 245",
+    "Microsoft Surface Pro 8",
+    "Puma Sports Backpack"
+  ];
+  
+document.addEventListener("DOMContentLoaded",function(){
+    // allProducts = await getData();
+    const input = document.getElementById("searchInput");
+    const debouncedSearch = debounce(function(){
+        const query = input.value;
+        const matches = getSimilarProducts(query);
+        displaySuggestions(matches);
+    },500);
+
+
+    input.addEventListener("keyup",debouncedSearch);
+});
