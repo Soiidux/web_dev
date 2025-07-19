@@ -24,3 +24,32 @@ function debounce(fn, delay){
         },delay);
     }
 }
+
+
+// function getData(obj){
+//     let productdisc = obj.data.data;
+//     let productnames = [];
+//     productdisc.forEach((element, index) => productnames[index] = productdisc[index].title );
+//     return productnames;
+// }
+// fetch("https://api.freeapi.app/api/v1/public/randomproducts?")
+//     .then((response)=>response.json())
+//     .then(getData)
+
+
+// The above code returns an array of product names called productnames using fetch, a better way to do this is as below:
+async function getData(){
+    try {
+        const response = await fetch("https://api.freeapi.app/api/v1/public/randomproducts");
+        const rawdata = await response.json();
+        const productDiscription = rawdata.data.data;
+        const productNames = productDiscription.map((element,index) => element.title);
+        return productNames;
+    }
+    catch(error) {
+        console.log(`Error: ${error}`);
+    }
+    finally{
+        console.log("All done");
+    }
+}
