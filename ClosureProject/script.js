@@ -1,4 +1,4 @@
-//Function to check if the hex code is a vlid hexcode
+//Function to check if the hex code is a valid hexcode
 function checkColor(color){
     const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
     return hexPattern.test(color);     
@@ -85,5 +85,13 @@ document.addEventListener("DOMContentLoaded",function(){
         }
     })
 
+
+    //Reset button to reset the page
+    resetBtn.addEventListener("click",()=>{
+        button_container.innerHTML = "";
+        customcolor_input.value = "";
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+    })
     
 })
