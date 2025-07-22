@@ -36,6 +36,15 @@ document.addEventListener("DOMContentLoaded",function(){
           document.body.style.backgroundColor = color;
         });
         li.appendChild(btn);
+
+        //Adding a delete button to delete the list element i.e the color change button
+        const deletebutton = document.createElement("button");
+        deletebutton.innerText = "< = Delete this button";
+        li.appendChild(deletebutton);
+        deletebutton.addEventListener("click",()=>{
+            li.remove();
+        })
+
       }
 
     //Creating buttons by adding event listener to create btn
