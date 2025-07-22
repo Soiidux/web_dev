@@ -5,6 +5,29 @@ function checkColor(color){
 }
 
 
+//Function to check if the color is dark or light
+function isDarkColor(hexColor) {
+    // Remove #
+    hexColor = hexColor.replace("#", "");
+  
+    // Expand shorthand (e.g. #abc #aabbcc)
+    if (hexColor.length === 3) {
+      hexColor = hexColor.split("").map(c => c + c).join("");
+    }
+  
+    // Parse into RGB
+    const r = parseInt(hexColor.substr(0, 2), 16);
+    const g = parseInt(hexColor.substr(2, 2), 16);
+    const b = parseInt(hexColor.substr(4, 2), 16);
+  
+    // Calculate brightness using relative luminance formula
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  
+    return brightness < 128; // dark if < 128
+  }
+
+
+
 document.addEventListener("DOMContentLoaded",function(){
     const color_selector = document.getElementById("color-selector");
     const customcolor_input = document.getElementById("custom-input");
@@ -32,8 +55,10 @@ document.addEventListener("DOMContentLoaded",function(){
         const btn = document.createElement("button");
         btn.innerText = color;
         btn.style.backgroundColor = color;
+        btn.style.color = isDarkColor(color) ? "white" : "black";
         btn.addEventListener("click", function () {
           document.body.style.backgroundColor = color;
+          document.body.style.color = isDarkColor(color) ? "white" : "black";
         });
         li.appendChild(btn);
 
