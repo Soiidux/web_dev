@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded",function(){
     const customcolor_input = document.getElementById("custom-input");
     const createBtn = document.getElementById("createbtn")
     const button_container = document.getElementById("buttons-container");
-
+    const resetBtn = document.getElementById("reset");
+    
     //Event listener to enable input when the user selects a custom input
     color_selector.addEventListener("change",()=>{
         if(color_selector.value === "Custom"){
