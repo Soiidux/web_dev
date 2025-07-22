@@ -1,3 +1,10 @@
+//Function to check if the hex code is a vlid hexcode
+function checkColor(color){
+    const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+    return hexPattern.test(color);     
+}
+
+
 document.addEventListener("DOMContentLoaded",function(){
     const color_selector = document.getElementById("color-selector");
     const customcolor_input = document.getElementById("custom-input");
@@ -6,7 +13,6 @@ document.addEventListener("DOMContentLoaded",function(){
 
     //Event listener to enable input when the user selects a custom input
     color_selector.addEventListener("change",()=>{
-        // console.log(color_selector.value);
         if(color_selector.value === "Custom"){
             customcolor_input.style.display = "inline-block";
         }
@@ -35,7 +41,14 @@ document.addEventListener("DOMContentLoaded",function(){
     //Creating buttons by adding event listener to create btn
     createBtn.addEventListener("click",()=>{
         let color = color_selector.value === "Custom"? customcolor_input.value.trim() : color_selector.value
-        makeColorButton(color);
+        if(color_selector.value === "Custom" && !checkColor(color)){
+            alert("Invalid Hex code");
+            customcolor_input.value="";
+        }
+        else{
+            makeColorButton(color);
+            customcolor_input.value="";
+        }
     })
 
     
