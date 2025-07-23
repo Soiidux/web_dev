@@ -40,6 +40,8 @@
     text-align: center;
     gap:10px;
     overflow-y: auto;
+    height: 100%;
+    width: 100%;
 
 }
 .item{

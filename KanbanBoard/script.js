@@ -1,3 +1,14 @@
+function attachDragEvents(target) {
+    target.addEventListener('dragstart', () => {
+      target.classList.add('flying');
+    });
+    target.addEventListener('dragend', () => {
+      target.classList.remove('flying');
+    });
+  }
+
+
+
 document.addEventListener("DOMContentLoaded",function(){
     const todo_board = document.getElementById("todo-board");
     const inprogress_board = document.getElementById("inprogress-board");
@@ -5,6 +16,8 @@ document.addEventListener("DOMContentLoaded",function(){
     const todoBtn = document.getElementById("create-todo-task");
     const inprogressBtn = document.getElementById("create-inprogress-task");
     const doneBtn = document.getElementById("create-done-task");
+    const items = document.querySelectorAll(".item");
+    const boards = document.querySelectorAll(".items");
 
     todoBtn.addEventListener("click",()=>{
 
@@ -13,6 +26,7 @@ document.addEventListener("DOMContentLoaded",function(){
             let element = document.createElement("p");
         element.className = "item";
         element.innerText = input;
+        element.setAttribute("draggable",true);
         todo_board.appendChild(element);
 
         let deleteBtn = document.createElement("button");
@@ -21,7 +35,11 @@ document.addEventListener("DOMContentLoaded",function(){
         deleteBtn.addEventListener("click",()=>{
             element.remove();
         })
+
+        attachDragEvents(element);
+
         }
+
     })
 
     inprogressBtn.addEventListener("click",()=>{
@@ -31,6 +49,7 @@ document.addEventListener("DOMContentLoaded",function(){
             let element = document.createElement("p");
         element.className = "item";
         element.innerText = input;
+        element.setAttribute("draggable",true);
         inprogress_board.appendChild(element);
 
         let deleteBtn = document.createElement("button");
@@ -39,6 +58,9 @@ document.addEventListener("DOMContentLoaded",function(){
         deleteBtn.addEventListener("click",()=>{
             element.remove();
         })
+
+        attachDragEvents(element);
+
         }
     })
 
@@ -49,6 +71,7 @@ document.addEventListener("DOMContentLoaded",function(){
             let element = document.createElement("p");
         element.className = "item";
         element.innerText = input;
+        element.setAttribute("draggable",true);
         done_board.appendChild(element);
 
         let deleteBtn = document.createElement("button");
@@ -56,8 +79,18 @@ document.addEventListener("DOMContentLoaded",function(){
         element.appendChild(deleteBtn);
         deleteBtn.addEventListener("click",()=>{
             element.remove();
+
+            attachDragEvents(element);
+
         })
         }
     })
 
+
+    boards.forEach(board =>{
+        board.addEventListener("dragover",()=>{
+            const flyingElement = document.querySelector(".flying");
+            board.appendChild(flyingElement);
+        })
+    })
 })
