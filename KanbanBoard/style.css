@@ -17,12 +17,35 @@
 
 .board{
     border: solid rgba(0, 0, 0, 0.22) 2px;
-    min-width: 300px;
+    min-width: 375px;
+    width: 32vw;
     height: 100vh;
     padding: 10px 20px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 
+.items{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap:10px;
 
+}
+.item{
+    background-color: rgb(47, 140, 246);
+    width: 30vw;
+    padding: 20px 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor:pointer;
+    
+}
+
+.item:hover{
+    background-color: rgb(107, 186, 255);
+    translate: 0px -1px;
 }
