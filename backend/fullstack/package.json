@@ -1,0 +1,12 @@
+{
+  "name": "fullstack",
+  "version": "1.0.0",
+  "description": "My first fullstack project, learned from chaiaurcode",
+  "license": "ISC",
+  "author": "soiidux",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
