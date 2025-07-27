@@ -1,6 +1,7 @@
 // const express = require('express')   //only valid when type is classicjs in package.json
 import express from "express"
 import dotenv from "dotenv"
+import cors from "cors"
 
 // dotenv.config(pathname)
 dotenv.config()
@@ -8,6 +9,12 @@ dotenv.config()
 const app = express()   //now app can do everything that express can do
 const port = process.env.PORT || 3000
 
+
+app.use(cors({
+  //configuration
+  origin : "https://localhost:3000",
+  methods : ["GET","POST","DELETE","OPTIONS"]
+}))
 
 //we are making a web server
 
