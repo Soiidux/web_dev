@@ -4,6 +4,10 @@ import dotenv from "dotenv" //Dotenv is a zero-dependency module that loads envi
 import cors from "cors" //one of the biggest headaches in dev world
 import dbConnect from "./utils/db.js"; //Importing a function to connect to a db
 
+//import all routes
+import userRoutes from "./routes/user.route.js"; 
+
+
 // dotenv.config(pathname)
 dotenv.config()
 
@@ -38,6 +42,9 @@ app.get("/lastname",(request,response) => {
 
 //connect to db
 dbConnect();
+
+//user routes
+app.use("/api/v1/users",userRoutes)
 console.log(process.env.PORT);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
