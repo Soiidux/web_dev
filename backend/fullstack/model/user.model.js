@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({                        //Creating a new
     timestamps : true
 })                       
 
-const user = mongoose.model("User",userSchema)                  //Creating a model using the schema 
+const User = mongoose.model("User",userSchema)                  //Creating a model using the schema 
 
 
-export default user
+export default User;
