@@ -94,4 +94,42 @@ const registerUser = async (req,res) => {
     // res.send("Registered");     
 }
 
+
+
+
+const verifyUser =  async(req,res) => {
+    //get Token from url
+    try{
+        const {token} = req.params;
+        if (!token){
+            return res.status(400).json({
+                message: "Invalid token"
+            })
+        }
+        //validate and find user based on token
+        const user = await User.findOne({verificationToken : token});
+        if (!user){
+            return res.status(400).json({
+                message: "Invalid token"
+            })
+        }
+        //set is verified to true
+        user.isVerified = true;
+        //remove verification token
+        user.verificationToken = null;
+        //save db and return response  
+        await user.save()
+
+        res.status(201).json({
+            message :"User verified successfully"
+        }
+        )
+    }
+    catch(error){
+        res.status(400).json({
+            message:"Not verified"
+        })
+    }
+}
 export {registerUser};
+export {verifyUser};
