@@ -3,6 +3,7 @@ import express from "express"
 import dotenv from "dotenv" //Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
 import cors from "cors" //one of the biggest headaches in dev world
 import dbConnect from "./utils/db.js"; //Importing a function to connect to a db
+import cookieParser from "cookie-parser";
 
 //import all routes
 import userRoutes from "./routes/user.route.js"; 
@@ -25,6 +26,7 @@ app.use(cors({
 
 app.use(express.json())                               //now the server accepts json
 app.use(express.urlencoded({extended:true}))          //lets your app read form data sent from websites.
+app.use(cookieParser())
 
 //we are making a web server
 
