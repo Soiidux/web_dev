@@ -116,7 +116,7 @@ const verifyUser =  async(req,res) => {
         //set is verified to true
         user.isVerified = true;
         //remove verification token
-        user.verificationToken = null;
+        user.verificationToken = undefined;
         //save db and return response  
         await user.save()
 
