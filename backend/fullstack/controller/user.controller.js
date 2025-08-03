@@ -144,7 +144,7 @@ const login = async (req,res) => {
     }
 
     try{
-        const user = await User.findOne({email : "email"})
+        const user = await User.findOne({email : email})
         if (!user){
             return res.status(400).json({
                 message:"Invalid email or password"
