@@ -189,6 +189,60 @@ const login = async (req,res) => {
         })
     }
 }
-export {registerUser};
-export {verifyUser};
-export {login};
+
+
+
+const getMe = async (req,res) => {
+    try {
+        const user = await User.findById(req.user.id).select("-password")
+        if(!user){
+            return res.status(400).json({
+                success: false,
+                message: "User not found"
+            })
+        }
+        res.status(200).json({
+            success: true,
+            message: "Reached at profile"
+        })
+
+    } catch (error) {
+        
+    }
+}
+
+
+
+const logoutUser = async (req,res) => {
+    try {
+        res.cookie("token","",{});
+        res.status(200).json({
+            success: true,
+            message: "User logged out"
+        })
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+const forgotPassword = async (req,res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+const resetPassword = async (req,res)  => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+export {registerUser, verifyUser, login, logoutUser, forgotPassword, resetPassword, getMe};
