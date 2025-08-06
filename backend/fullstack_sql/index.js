@@ -2,6 +2,7 @@ import express from "express.js"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors"
+import userRouter from "./routes/auth.routes";
 
 const app = express();                                      //gives all the powers of express to a variable called app
 dotenv.config();                                            //process.env is setup
@@ -26,3 +27,6 @@ app.get("/",(req,res)=>{
         message:"Reached /"
     })
 })
+
+
+app.use("/api/v1/users",userRouter)                         //Enable user routes
