@@ -1,0 +1,16 @@
+# Ignore node_modules folder (installed dependencies)
+node_modules/
+
+# Ignore logs
+# *.log
+
+# Ignore OS generated files
+# .DS_Store
+# Thumbs.db
+
+# Ignore environment variables file
+.env
+
+# Ignore editor-specific folders/files
+# .vscode/
+# .idea/
