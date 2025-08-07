@@ -14,3 +14,5 @@ node_modules/
 # Ignore editor-specific folders/files
 # .vscode/
 # .idea/
+
+/generated/prisma
