@@ -1,8 +1,8 @@
-import express from "express.js"
+import express from "express"
 import dotenv from "dotenv"
 import cookieParser from "cookie-parser";
 import cors from "cors"
-import userRouter from "./routes/auth.routes";
+import userRouter from "./routes/auth.routes.js";
 
 const app = express();                                      //gives all the powers of express to a variable called app
 dotenv.config();                                            //process.env is setup
