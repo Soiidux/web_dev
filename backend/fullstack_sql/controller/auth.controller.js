@@ -89,3 +89,56 @@ export const registerUser = async (req,res) => {
     //check if email exists in db
     //add user to db
 }
+
+
+
+export const verifyUser = async (req,res) => {
+    //get token from params
+    //check if token is valid
+    //check if token is same as verificationToken
+    //change isverified to true
+    try {
+        const {token} = req.params;
+        if (!token){
+            console.log("Token not exist hehe")
+            return res.status(400).json({
+                message: "Invalid token"
+            })
+        }
+
+        const user = await prisma.user.findUnique({
+            where: {verificationToken: token}
+        })
+
+        if (!user){
+            console.log("User not there")
+            return res.status(400).json({
+                message: "Invalid token"
+            })
+        }
+
+        if(user.verificationToken == token){
+            await prisma.user.update({
+                where: {verificationToken: token},
+                data: {
+                    isVerified: true,
+                    verificationToken: null
+                }
+            });
+        }
+
+        res.status(201).json({
+            success:true,
+            message:"User verified successfully"
+        })
+
+
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            success:false,
+            error,
+            message:"Error verifying user"
+        })
+    }
+}
