@@ -7,6 +7,7 @@ import bcrypt from "bcrypt"
 import crypto from "crypto"
 import nodemailer from "nodemailer"
 import dotenv from "dotenv"
+import jwt from "jsonwebtoken"
 
 dotenv.config();
 // const prisma = new PrismaClient();
@@ -139,6 +140,72 @@ export const verifyUser = async (req,res) => {
             success:false,
             error,
             message:"Error verifying user"
+        })
+    }
+}
+
+
+
+export const loginUser = async (req,res) => {
+    //get credentials from the user 
+    //check if they are valid
+    //create jwt sign token and store it in the cookies
+
+    const {email,password} = req.body;
+    if(!email || !password){
+        return res.status(400).json({
+            success:false,
+            message:"All fields are required"
+        });
+    }
+
+    try {
+        const user = await prisma.user.findUnique({
+            where:{email}
+        })
+
+        if(!user){
+            return res.status(400).json({
+                success:false,
+                message:"User not registered"
+            })
+        }
+
+        const isMatched = await bcrypt.compare(password,user.password);
+        if(!isMatched){
+            return res.status(400).json({
+                success:false,
+                message:"Incorrect password"
+            });
+        };
+
+        const jwtToken = jwt.sign({id:user.id,role:user.role},process.env.JWT_SECRET,{expiresIn:"24h"});
+        const cookieOptions = {
+            httpOnly: true,
+            secure: true,
+            maxAge : 24*60*60*1000
+        };
+        res.cookie('jwtToken',jwtToken,cookieOptions);
+
+        res.status(201).json({
+            success:true,
+            message:"User is logged in",
+            jwtToken,
+            user:{
+                name: user.name,
+                email:user.email,
+                role:user.role
+            }
+        });
+        
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success:false,
+            error,
+            message:"Error logging in the user"
         })
     }
 }
