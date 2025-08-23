@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path, { parse } from 'path';
 import url from 'url';
+import { logger } from './middleware/user.middleware.js';
 import router from './userRoutes/user.routes.js';
 
 dotenv.config();
@@ -16,6 +17,8 @@ app.use(express.json());
 //Middlware to use url encoded data
 app.use(express.urlencoded({extended:false}));
 
+//Logger middleware
+app.use(logger);
 // app.use(express.static(path.join(__dirname,'public'))); 
 //Static enables you to make the contents of a folder publically accessible through http
 //For example if in this case I go to localhost:PORT/ it would lead me to index.html and if I were to go to localhost:PORT/about.html it
