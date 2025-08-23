@@ -9,7 +9,8 @@ let posts = [
     {id:1,title:'Post One'},
     {id:2,title:'Post Two'},
     {id:3,title:'Post Three'}
-]
+];
+
 //making routes
 router.get('/',(req,res)=>{
     //In express you dont need to declare what type of data is going to be sent, its all dynamic
@@ -48,4 +49,37 @@ router.get('/api/posts/:id',(req,res)=>{
     }
 })
 
+//Post / add a single post
+router.post('/api/posts',(req,res)=>{
+    const { id , title } = req.body;
+    if(!id || !title){
+        return res.status(400).json({message: "All fields are required"});
+    }
+    posts.push(req.body);
+    res.status(201).json(posts);      
+})
+
+//put or update a single post
+router.put('/api/posts/:id',(req,res)=>{
+    const id = parseInt(req.params.id);
+    const post = posts.find((post)=> post.id === id);
+    if(!post){
+        return res.status(404).json({message:"Post does not exist"});
+    }
+    post.title = req.body.title;
+    res.status(200).json(posts);
+      
+})
+
+
+router.delete('/api/posts/:id',(req,res)=>{
+    const id = parseInt(req.params.id);
+    const post = posts.find((post)=> post.id === id);
+    if(!post){
+        return res.status(404).json({message:"Post does not exist"});
+    }
+
+    posts = posts.filter((post)=>post.id!==id);
+    res.status(200).json(posts);
+})
 export default router;

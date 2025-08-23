@@ -10,6 +10,11 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 const app = express();
 
+//Body parser middleware
+app.use(express.json());
+
+//Middlware to use url encoded data
+app.use(express.urlencoded({extended:false}));
 
 // app.use(express.static(path.join(__dirname,'public'))); 
 //Static enables you to make the contents of a folder publically accessible through http
@@ -17,6 +22,7 @@ const app = express();
 //would lead me to about.html
 
 //user routes
+// app.use('/api/posts',router);   Use router with a url
 app.use(router);
 
 
