@@ -37,12 +37,14 @@ router.get('/api/posts',(req,res)=>{
 })
 
 //get single post
-router.get('/api/posts/:id',(req,res)=>{
+router.get('/api/posts/:id',(req,res,next)=>{
     const id = parseInt(req.params.id);
     const post = posts.find((post)=> post.id === id);
 
     if(!post){
-        res.status(404).json({message: `A post with the id of ${id} was not found`});
+        const error = new Error(`A post with the id of ${id} was not found`);
+        error.status = 404;
+        return next(error);
     }
     else{
         res.status(200).json(post);
@@ -50,33 +52,39 @@ router.get('/api/posts/:id',(req,res)=>{
 })
 
 //Post / add a single post
-router.post('/api/posts',(req,res)=>{
+router.post('/api/posts',(req,res,next)=>{
     const { id , title } = req.body;
     if(!id || !title){
-        return res.status(400).json({message: "All fields are required"});
+        const error = new Error(`Please fill all the fields`);
+        error.status = 404;
+        return next(error);
     }
     posts.push(req.body);
     res.status(201).json(posts);      
 })
 
 //put or update a single post
-router.put('/api/posts/:id',(req,res)=>{
+router.put('/api/posts/:id',(req,res,next)=>{
     const id = parseInt(req.params.id);
     const post = posts.find((post)=> post.id === id);
     if(!post){
-        return res.status(404).json({message:"Post does not exist"});
+        const error = new Error(`A post with the id of ${id} was not found`);
+        error.status = 404;
+        return next(error);
     }
     post.title = req.body.title;
     res.status(200).json(posts);
       
 })
 
-
+//Delete a post
 router.delete('/api/posts/:id',(req,res)=>{
     const id = parseInt(req.params.id);
     const post = posts.find((post)=> post.id === id);
     if(!post){
-        return res.status(404).json({message:"Post does not exist"});
+        const error = new Error(`A post with the id of ${id} was not found`);
+        error.status = 404;
+        return next(error);
     }
 
     posts = posts.filter((post)=>post.id!==id);
