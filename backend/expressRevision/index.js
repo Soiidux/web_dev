@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended:false}));
 //Logger middleware
 app.use(logger);
 
-// app.use(express.static(path.join(__dirname,'public'))); 
+app.use(express.static(path.join(__dirname,'public'))); 
 //Static enables you to make the contents of a folder publically accessible through http
 //For example if in this case I go to localhost:PORT/ it would lead me to index.html and if I were to go to localhost:PORT/about.html it
 //would lead me to about.html
