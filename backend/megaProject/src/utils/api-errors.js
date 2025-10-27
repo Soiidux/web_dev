@@ -1,3 +1,15 @@
+/**
+ * Error class for handling API errors
+ * 
+ * @class ApiError
+ * @extends Error
+ * @constructor
+ * @param {number} statusCode - HTTP status code
+ * @param {string} message - Error message
+ * @param {Array} errors - Array of errors
+ * @returns {ApiError}
+ */
+
 class ApiError extends Error {
     constructor(
         statusCode,
@@ -6,6 +18,7 @@ class ApiError extends Error {
         stack = '',
     ){
         super(message);
+        this.message = message;
         this.statusCode = statusCode;
         this.errors = errors;
         this.success = false;
