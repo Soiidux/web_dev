@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import Mailgen from "mailgen";
-import { SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_SENDER, SMTP_USER } from "./env_constants";
-import ApiError from "./api-errors";
+import { SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_SENDER, SMTP_USER } from "./env_constants.js";
+import ApiError from "./api-errors.js";
 
 /**
  * Sends an email with nodemailer and Mailgen.
