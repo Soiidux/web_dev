@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
-import { ACCESS_TOKEN_EXPIRY, ACCESS_TOKEN_SECRET } from "../utils/env_constants";
+import { ACCESS_TOKEN_EXPIRY, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_EXPIRY, REFRESH_TOKEN_SECRET } from "../utils/env_constants.js";
 const userSchema = mongoose.Schema({
     avatar:{
         type : {
@@ -56,9 +56,13 @@ const userSchema = mongoose.Schema({
         type : Date,
         default : null
     },
-    refereshToken : {
+    refreshToken : {
         type : String,
         default : ""
+    },
+    refreshTokenExpiry: {
+        type: Date,
+        default: null
     }
 },{timestamps:true})
 
@@ -78,6 +82,7 @@ userSchema.methods.generateAccessToken = function(){
         {
             _id : this._id,
             username : this.username,
+            fullname : this.fullname,
             email : this.email
         },
         ACCESS_TOKEN_SECRET,
@@ -85,7 +90,15 @@ userSchema.methods.generateAccessToken = function(){
     )
 }
 
-//generate refresh token
+userSchema.methods.generateRefreshToken = function(){
+    return jwt.sign(
+        {
+            id:this._id
+        },
+        REFRESH_TOKEN_SECRET,
+        {expiresIn: REFRESH_TOKEN_EXPIRY}
+    )
+}
 
 userSchema.methods.generateTemporaryToken = function(){
     const unHashedToken = crypto.randomBytes(32).toString("hex");
