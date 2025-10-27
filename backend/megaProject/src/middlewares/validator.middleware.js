@@ -13,5 +13,6 @@ export const validate = (req,res,next)=>{
         })
     })
 
-    throw new ApiError(400,'Validation Failed',extractedError);
+    const error = new ApiError(400,'Validation Failed',extractedError);
+    next(error);
 }

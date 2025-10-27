@@ -2,6 +2,9 @@ import {body} from "express-validator"
 
 const userRegistrationValidator = () => {
     return [
+        body('fullname')
+            .trim()
+            .notEmpty().withMessage("Fullname is required"),
         body('email')
             .trim()
             .notEmpty().withMessage("Email is required")
