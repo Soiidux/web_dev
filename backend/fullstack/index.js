@@ -18,7 +18,8 @@ const port = process.env.PORT || 3000
 
 app.use(cors({
   //configuration
-  origin : process.env.BASE_URL,                  //this or an array of origins, origin is from where I want the request to come
+  origin : "http://localhost:5173",                  //this or an array of origins, origin is from where I want the request to come
+  credentials: true,
   methods : ["GET","POST","DELETE","OPTIONS"],        //not case sensitive
   allowedHeaders : ["Content-Type","Authorization"]   //case sensitive
 }))
